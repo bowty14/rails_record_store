@@ -15,7 +15,8 @@ class AlbumsController < ApplicationController
   def create
     # Code for creating a new album goes here.
     @album = Album.new(album_params)
-    if @album.save #save returns a boolean. if it succesfully saves returns true
+    if @album.save
+      flash[:notice] = "Album successfully added!"
       redirect_to albums_path
     else
       render :new
@@ -36,7 +37,7 @@ class AlbumsController < ApplicationController
 
   def update
     # Code for updating an album goes here.
-    @album = Album.find(params[:id])
+    @album= Album.find(params[:id])
     if @album.update(album_params)
       redirect_to albums_path
     else
@@ -52,7 +53,7 @@ class AlbumsController < ApplicationController
   end
 
   private
-    def album_params # this method lets our app know which params can be passed into our methods
+    def album_params
       params.require(:album).permit(:name, :genre)
     end
 
