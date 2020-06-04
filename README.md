@@ -1,4 +1,4 @@
-# Project name music festival
+# Project name rails record store
 
 #### By **Tyler Bowerman**
 
